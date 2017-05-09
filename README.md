@@ -5,6 +5,6 @@ Core Unity3d tools
   
 ## Textures tools
 
-  Enable\disable mipmaps
-  Enable\disable ReadWrite
-  Force multiple of 4
+- Enable\disable mipmaps
+- Enable\disable ReadWrite
+- Force multiple of 4
