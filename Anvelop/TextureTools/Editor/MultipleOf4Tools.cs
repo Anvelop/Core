@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Anvelop.TextureTools.Editor
 {
-	public class MuiltipleOf4Tools
+	public class MultipleOf4Tools
 	{
 		[MenuItem(Core.Path + "Force To Multiple Of 4 _&%F", priority = 2)]
 		public static void ForceToMultipleOf4()
