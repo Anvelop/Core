@@ -16,6 +16,7 @@ namespace Anvelop.Core.Binding
 #if ADVANCED_INSPECTOR
 		[AdvancedInspector.ReadOnly]
 #endif
+		[Header("Auto (ReadOnly)")]
 		public string Path;
 
 #if ADVANCED_INSPECTOR
@@ -23,6 +24,7 @@ namespace Anvelop.Core.Binding
 #endif
 		public string RuledPath;
 
+		[Header("Manual")]
 		public string SubRule;
 
 #if UNITY_EDITOR
