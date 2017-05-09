@@ -3,7 +3,7 @@ Core Unity3d tools
 
 ## Resources path binding
   
-  - Create/Anvelop/Entities/ResourcesPathBinding
+  Create/Anvelop/Entities/ResourcesPathBinding
   
   Result for Assets/Resources/SubFolder
   
