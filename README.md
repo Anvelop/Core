@@ -5,7 +5,7 @@ Core Unity3d tools
   
   - Create/Anvelop/Entities/ResourcesPathBinding
   
-  Result for Assets\Resources\SubFolder
+  Result for Assets/Resources/SubFolder
   
   <img src="https://api.monosnap.com/rpc/file/download?id=z1i4Frf2nFQG9Z6a0tUYStlH1Ak3kA">
   
