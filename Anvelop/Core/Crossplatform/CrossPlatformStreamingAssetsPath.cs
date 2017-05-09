@@ -6,7 +6,7 @@ using System.IO;
 #endif
 using UnityEngine;
 
-namespace Anvelop.Common.Crossplatform
+namespace Anvelop.Core.Crossplatform
 {
 	public static class CrossplatformStreamingAssetsPath
 	{

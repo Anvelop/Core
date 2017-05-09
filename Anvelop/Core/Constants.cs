@@ -1,4 +1,4 @@
-﻿namespace Anvelop.Common
+﻿namespace Anvelop.Core
 {
 	public static class Constants
 	{

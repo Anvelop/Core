@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Anvelop.Common.Loadable
+namespace Anvelop.Core.Loadable
 {
 	public class LoadableResource<T> where T : Object
 	{

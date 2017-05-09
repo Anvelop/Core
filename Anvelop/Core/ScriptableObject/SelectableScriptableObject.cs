@@ -3,7 +3,7 @@ using UnityEditor;
 #endif
 using UnityEngine;
 
-namespace Anvelop.Common.ScriptableObject
+namespace Anvelop.Core.ScriptableObject
 {
 	public class SelectableScriptableObject : UnityEngine.ScriptableObject
 	{

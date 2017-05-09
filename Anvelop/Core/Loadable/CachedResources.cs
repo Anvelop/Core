@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Anvelop.Common.Loadable
+namespace Anvelop.Core.Loadable
 {
 	public class CachedResources : MonoBehaviour
 	{
