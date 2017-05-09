@@ -5,16 +5,16 @@ namespace Anvelop.Core.Loadable
 {
 	public class CachedResources : MonoBehaviour
 	{
-		static readonly Dictionary<string, Object> Cache = new Dictionary<string, Object>();
+		private readonly Dictionary<string, Object> _cache = new Dictionary<string, Object>();
 
 		public T Load<T>(string path) where T : Object
 		{
-			if (!Cache.ContainsKey(path))
+			if (!_cache.ContainsKey(path))
 			{
-				Cache[path] = new LoadableResource<T>(path).Load();
+				_cache[path] = new LoadableResource<T>(path).Load();
 			}
 
-			return (T)Cache[path];
+			return (T)_cache[path];
 		}
 	}
 }
