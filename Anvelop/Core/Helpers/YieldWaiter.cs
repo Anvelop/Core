@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace Anvelop.Core.Helpers
 {
@@ -30,11 +31,19 @@ namespace Anvelop.Core.Helpers
 			_count--;
 		}
 
-		public IEnumerator<float> Waiter()
+		public IEnumerator<float> WaitAsFloat()
 		{
 			while (_count > 0)
 			{
 				yield return 0f;
+			}
+		}
+
+		public IEnumerator Wait()
+		{
+			while (_count > 0)
+			{
+				yield return null;
 			}
 		}
 	}
