@@ -9,6 +9,9 @@ Core Unity3d tools
   
   <img src="https://api.monosnap.com/rpc/file/download?id=F2VHV9QCgnVCcCVEFCqFdGOMJtEP6V">
   
+## Extensions
+## Singletones
+  
 ## Textures tools
 
 - Enable\disable mipmaps
