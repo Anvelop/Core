@@ -1,11 +1,13 @@
-﻿#if UNITY_EDITOR
+﻿
+using Anvelop.Core.Interfaces;
+#if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
 
 namespace Anvelop.Core.ScriptableObject
 {
-	public class SelectableScriptableObject : UnityEngine.ScriptableObject
+	public class SelectableScriptableObject : UnityEngine.ScriptableObject, IValidatable
 	{
 #if UNITY_EDITOR
 #if ADVANCED_INSPECTOR
@@ -19,7 +21,7 @@ namespace Anvelop.Core.ScriptableObject
 		}
 #endif
 
-		protected virtual void OnValidate()
+		public virtual void OnValidate()
 		{
 		}
 	}
