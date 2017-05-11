@@ -1,5 +1,6 @@
 # Anvelop-Core
-Core Unity3d tools
+- Core Unity3d tools
+- AdvancedInspector support
 
 ## Resources path binding
   
