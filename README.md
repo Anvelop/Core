@@ -1,13 +1,18 @@
 # Anvelop-Core
-Core Unity3d tools
+- Core Unity3d tools
+- AdvancedInspector support
 
 ## Resources path binding
   
-  Create/Anvelop/Entities/ResourcesPathBinding
+Create/Anvelop/Entities/ResourcesPathBinding
+
+<img src="https://api.monosnap.com/rpc/file/download?id=6rZdI6m8xjE2zb4QC2XNOkRPtN7D45">
   
-  Result for Assets/Resources/SubFolder
-  
-  <img src="https://api.monosnap.com/rpc/file/download?id=F2VHV9QCgnVCcCVEFCqFdGOMJtEP6V">
+## Extensions
+- Linq
+- GameObject
+- Enum
+## Singletones
   
 ## Textures tools
 
