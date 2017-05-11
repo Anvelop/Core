@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Anvelop.Core.Extensions;
-using MD.System.GameScene;
 using UnityEngine;
 using BaseObject = UnityEngine.Object;
 using Random = UnityEngine.Random;
@@ -114,20 +113,6 @@ namespace Anvelop.Core.Helpers
 			for (int i = 0; i < list.Count; i++)
 			{
 				var index = Random.Range(0, list.Count);
-				var obj = list[i];
-				list[i] = list[index];
-				list[index] = obj;
-			}
-		}
-
-		public static void ShuffleSessionRandom<T>(this List<T> list)
-		{
-			if (list == null)
-				return;
-
-			for (int i = 0; i < list.Count; i++)
-			{
-				var index = GameSession.Randominator.RangeInt(0, list.Count);
 				var obj = list[i];
 				list[i] = list[index];
 				list[index] = obj;
