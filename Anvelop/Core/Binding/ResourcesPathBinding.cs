@@ -12,7 +12,7 @@ namespace Anvelop.Core.Binding
 	[CreateAssetMenu(fileName = DefaultPrefix + "ResourcesPathBinding",
 		menuName = Constants.EntitiesMenuPath + "ResourcesPathBinding",
 		order = 0)]
-	public class ResourcesPathBinding : SelectableScriptableObject
+	public class ResourcesPathBinding : WithDefaultPrefix
 	{
 		public const string DefaultPrefix = "[Binding] ";
 
@@ -20,6 +20,7 @@ namespace Anvelop.Core.Binding
 		[AdvancedInspector.ReadOnly]
 #endif
 		[Header("Auto (Read-Only)")]
+		public string OriginPath;
 		public string Path;
 
 #if ADVANCED_INSPECTOR
@@ -40,35 +41,30 @@ namespace Anvelop.Core.Binding
 			return new StringBuilder().AppendFormat(RuledPath, array).ToString();
 		}
 
+		protected override string GetDefaultPrefix
+		{
+			get { return DefaultPrefix; }
+		}
+
 #if UNITY_EDITOR
 		public override void OnValidate()
 		{
 			string path = AssetDatabase.GetAssetPath(this);
+
+			path = path.Replace(name + Constants.AssetSubName, string.Empty);
+
+			OriginPath = path;
 
 			if (path.Contains(Constants.ResourcesFolderName))
 			{
 				int index = path.LastIndexOf(Constants.ResourcesFolderName, StringComparison.Ordinal);
 
 				path = path.Substring(index + Constants.ResourcesFolderName.Length);
-
-				path = path.Replace(name + Constants.AssetSubName, string.Empty);
 			}
 
 			Path = path;
 
 			RuledPath = new StringBuilder(Path).Append(SubRule).ToString();
-
-			CheckDefaultPrefix();
-		}
-
-		private void CheckDefaultPrefix()
-		{
-			if (name.Contains(DefaultPrefix))
-			{
-				return;
-			}
-
-			Debug.LogAssertionFormat("{0} doesn`t contain prefix {1}", name, DefaultPrefix);
 		}
 #endif
 	}

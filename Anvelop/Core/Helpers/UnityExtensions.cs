@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Anvelop.Core.Extensions;
 using UnityEngine;
@@ -38,6 +39,11 @@ namespace Anvelop.Core.Helpers
 			BaseObject.Destroy(obj);
 		}
 
+		public static bool ToBool(this int i)
+		{
+			return Convert.ToBoolean(i);
+		}
+
 		public static List<Transform> GetAllChildrenList(this Transform root)
 		{
 			var totalList = new List<Transform>();
@@ -71,6 +77,13 @@ namespace Anvelop.Core.Helpers
 		public static Transform[] GetAllChildren(this Transform root)
 		{
 			return root.GetAllChildrenList().ToArray();
+		}
+
+		public static T PopFirst<T>(this IList<T> list)
+		{
+			var element = list[0];
+			list.RemoveAt(0);
+			return element;
 		}
 
 		public static Transform[] GetTopChildren(this Transform root)
@@ -190,6 +203,13 @@ namespace Anvelop.Core.Helpers
 			trans.Reset();
 		}
 
+		public static void SetParentAndResetScale(this Transform trans, Transform parent, Vector3 localPosition)
+		{
+			trans.SetParent(parent);
+			trans.localScale = Vector3.one;
+			trans.localPosition = localPosition;
+		}
+
 		public static void SetParentAndReset(this RectTransform trans, Transform parent)
 		{
 			trans.SetParent(parent);
@@ -245,7 +265,7 @@ namespace Anvelop.Core.Helpers
 				return;
 			}
 
-			UnityEditor.EditorApplication.delayCall += delegate { BaseObject.DestroyImmediate(go, true); };
+			BaseObject.DestroyImmediate(go, true);
 #else
 		GameObject.Destroy(go);
 #endif

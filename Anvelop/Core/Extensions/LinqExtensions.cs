@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Anvelop.Core.Helpers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,6 +10,27 @@ namespace Anvelop.Core.Extensions
 	public static class LinqExtensions
 	{
 		private const int MaxBubbleSortSize = 100;
+
+		public static TR SelectFirstOrDefault<T, TR>(this IEnumerable<T> self, Func<T, TR> func, Func<TR, bool> firstFunc)
+		{
+			if (self == null)
+			{
+				Debug.LogError("Enumerable is null.");
+				return default(TR);
+			}
+
+			foreach (T x in self)
+			{
+				var res = func(x);
+
+				if (firstFunc(res))
+				{
+					return res;
+				}
+			}
+
+			return default(TR);
+		}
 
 		public static IEnumerable<TR> Select<T, TR>(this IEnumerable<T> self, Func<T, TR> func)
 		{
@@ -567,6 +589,40 @@ namespace Anvelop.Core.Extensions
 			return FirstOrDefault(self, func);
 		}
 
+		public static int? LastIndex<T>(this IEnumerable<T> self)
+		{
+			if (self == null)
+			{
+				Debug.LogError("Enumerable is null.");
+				return null;
+			}
+
+			if (self is T[])
+			{
+				T[] arr = (T[]) self;
+				return arr.Length - 1;
+			}
+			if (self is List<T>)
+			{
+				List<T> lst = (List<T>) self;
+				return lst.Count - 1;
+			}
+
+			int startI = -1;
+
+			foreach (T x in self)
+			{
+				startI++;
+			}
+
+			if (startI == -1)
+			{
+				return null;
+			}
+
+			return startI;
+		}
+
 		public static T LastOrDefault<T>(this IEnumerable<T> self)
 		{
 			if (self == null)
@@ -642,6 +698,20 @@ namespace Anvelop.Core.Extensions
 			}
 
 			float result = 0;
+			foreach (T x in self)
+				result += summator(x);
+			return result;
+		}
+
+		public static double SumDouble<T>(this IEnumerable<T> self, Func<T, double> summator)
+		{
+			if (self == null)
+			{
+				Debug.LogError("Enumerable is null.");
+				return 0;
+			}
+
+			double result = 0;
 			foreach (T x in self)
 				result += summator(x);
 			return result;
@@ -740,7 +810,7 @@ namespace Anvelop.Core.Extensions
 			return list;
 		}
 
-		public static bool Intersaction<T>(this List<T> self, List<T> other)
+		public static bool Intersaction<T>(this IList<T> self, IList<T> other)
 		{
 			if (self == null || other == null)
 			{
@@ -822,6 +892,15 @@ namespace Anvelop.Core.Extensions
 					list.Add(item);
 			}
 			return dict;
+		}
+
+		public static T Next<T>(this IEnumerable<T> list, T after)
+		{
+			if (list.Last().Equals(after)) return default(T);
+
+			int index = list.IndexOf(arg1 => arg1.Equals(after));
+
+			return list.ElementAt(index + 1);
 		}
 
 		public static IEnumerable<T> Empty<T>()
